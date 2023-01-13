@@ -1,7 +1,7 @@
 package com.erathia.erathiamusicupdater.music.mappers;
 
 import com.erathia.erathiaMusicClient.musicsClient.contract.TrackDto;
-import com.erathia.erathiadata.models.Track;
+import com.erathia.erathiaData.models.Track;
 
 public class TrackMapper implements IMap{
     public static Track map(TrackDto trackDto) {

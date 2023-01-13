@@ -1,4 +1,4 @@
-package com.erathia.erathiadata.models;
+package com.erathia.erathiaData.models;
 
 import jakarta.persistence.*;
 import lombok.Getter;

@@ -15,8 +15,6 @@ public class AlbumDto {
     private String link;
     @JsonProperty("genre_id")
     private int genreId;
-    private String label;
-    private int duration;
     private int fans;
     @JsonProperty("release_date")
     private LocalDate releaseDate;

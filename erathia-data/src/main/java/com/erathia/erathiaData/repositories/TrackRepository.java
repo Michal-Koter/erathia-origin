@@ -1,6 +1,6 @@
-package com.erathia.erathiadata.repositories;
+package com.erathia.erathiaData.repositories;
 
-import com.erathia.erathiadata.models.Track;
+import com.erathia.erathiaData.models.Track;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.util.Optional;

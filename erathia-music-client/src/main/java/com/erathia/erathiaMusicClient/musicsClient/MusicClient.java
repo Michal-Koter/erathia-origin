@@ -91,7 +91,7 @@ public class MusicClient implements IMusicClient{
                 .toUri();
         List<TrackDto> tracks = new ArrayList<>();
         PageTrackDto page = restClient.getForObject(uri, PageTrackDto.class);
-        while (true) {
+        while (page != null) {
             tracks.addAll(page.getData());
             if (page.getNext() != null) {
                 page = restClient.getForObject(page.getNext(), PageTrackDto.class);
@@ -100,6 +100,18 @@ public class MusicClient implements IMusicClient{
             }
         }
         return tracks;
+    }
+
+    @Override
+    public TrackDto getTrack(int trackId) {
+        URI uri = UriComponentsBuilder.newInstance()
+                .scheme("https")
+                .host(baseUrl)
+                .pathSegment("track")
+                .pathSegment(trackId+"")
+                .build()
+                .toUri();
+        return restClient.getForObject(uri,TrackDto.class);
     }
 
     @Override

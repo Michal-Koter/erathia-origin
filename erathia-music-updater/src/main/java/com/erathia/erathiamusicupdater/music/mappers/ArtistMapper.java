@@ -1,7 +1,7 @@
 package com.erathia.erathiamusicupdater.music.mappers;
 
 import com.erathia.erathiaMusicClient.musicsClient.contract.ArtistDto;
-import com.erathia.erathiadata.models.Artist;
+import com.erathia.erathiaData.models.Artist;
 
 public class ArtistMapper implements IMap{
     public static Artist map(ArtistDto artistDto) {

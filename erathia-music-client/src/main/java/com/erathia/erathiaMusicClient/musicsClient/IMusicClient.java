@@ -12,5 +12,6 @@ public interface IMusicClient {
     ArtistDto getArtist(int id);
     List<AlbumDto> getAlbums(int artistId);
     List<TrackDto> getTracks(int albumId);
+    TrackDto getTrack(int trackId);
     List<GenreDto> getGenres();
 }

@@ -1,7 +1,7 @@
 package com.erathia.erathiamusicupdater.music.mappers;
 
 import com.erathia.erathiaMusicClient.musicsClient.contract.GenreDto;
-import com.erathia.erathiadata.models.Genre;
+import com.erathia.erathiaData.models.Genre;
 
 public class GenreMapper implements IMap{
      public static Genre map(GenreDto genreDto) {

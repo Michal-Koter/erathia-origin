@@ -1,4 +1,4 @@
-package com.erathia.erathiadata.models;
+package com.erathia.erathiaData.models;
 
 import jakarta.persistence.*;
 import lombok.Getter;
@@ -23,7 +23,7 @@ public class Track {
     @Column(name = "`rank`")
     private int rank;
     private LocalDate releaseDate;
-    private int bpm;
+    private double bpm;
     private int sourceId;
     @ManyToOne
     private Album album;

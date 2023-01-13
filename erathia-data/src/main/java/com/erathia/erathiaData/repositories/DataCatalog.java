@@ -1,4 +1,4 @@
-package com.erathia.erathiadata.repositories;
+package com.erathia.erathiaData.repositories;
 
 import lombok.Getter;
 import org.springframework.beans.factory.annotation.Autowired;

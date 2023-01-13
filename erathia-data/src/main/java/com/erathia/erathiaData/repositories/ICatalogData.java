@@ -1,4 +1,4 @@
-package com.erathia.erathiadata.repositories;
+package com.erathia.erathiaData.repositories;
 
 public interface ICatalogData {
     AlbumRepository getAlbums();

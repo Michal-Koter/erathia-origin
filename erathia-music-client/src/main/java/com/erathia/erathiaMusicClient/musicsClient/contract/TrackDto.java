@@ -1,5 +1,6 @@
 package com.erathia.erathiaMusicClient.musicsClient.contract;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.Getter;
 import lombok.Setter;
@@ -18,7 +19,7 @@ public class TrackDto {
     private int rank;
     @JsonProperty("release_date")
     private LocalDate releaseDate;
-    private int bpm;
+    private double bpm;
     private ArtistDto artist;
     private AlbumDto album;
 }

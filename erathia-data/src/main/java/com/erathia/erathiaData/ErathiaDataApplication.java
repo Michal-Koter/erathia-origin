@@ -1,4 +1,4 @@
-package com.erathia.erathiadata;
+package com.erathia.erathiaData;
 
 
 import org.springframework.boot.SpringApplication;

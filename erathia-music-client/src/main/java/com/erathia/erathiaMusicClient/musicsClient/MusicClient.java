@@ -1,9 +1,7 @@
 package com.erathia.erathiaMusicClient.musicsClient;
 
 import com.erathia.erathiaMusicClient.musicsClient.contract.*;
-import com.erathia.erathiaMusicClient.musicsClient.contract.pages.PageAlbumDto;
-import com.erathia.erathiaMusicClient.musicsClient.contract.pages.PageGenreDto;
-import com.erathia.erathiaMusicClient.musicsClient.contract.pages.PageTrackDto;
+import com.erathia.erathiaMusicClient.musicsClient.contract.pages.*;
 import lombok.Getter;
 import lombok.Setter;
 import org.springframework.stereotype.Component;
@@ -17,11 +15,11 @@ import java.util.List;
 @Getter
 @Setter
 @Component
-public class MusicClient implements IMusicClient{
+public class MusicClient implements IMusicClient {
     private RestTemplate restClient;
     private final String baseUrl = "api.deezer.com";
 
-    public MusicClient(){
+    public MusicClient() {
         restClient = new RestTemplate();
     }
 
@@ -32,7 +30,7 @@ public class MusicClient implements IMusicClient{
                 .host(baseUrl)
                 .pathSegment("search")
                 .queryParam("q", "artist:\"" + name + "\"")
-                .queryParam("limit",1)
+                .queryParam("limit", 1)
                 .build()
                 .toUri();
         PageTrackDto page = restClient.getForObject(uri, PageTrackDto.class);
@@ -50,7 +48,7 @@ public class MusicClient implements IMusicClient{
                 .scheme("https")
                 .host(baseUrl)
                 .pathSegment("artist")
-                .pathSegment(id+"")
+                .pathSegment(id + "")
                 .build()
                 .toUri();
         return restClient.getForObject(uri, ArtistDto.class);
@@ -62,7 +60,7 @@ public class MusicClient implements IMusicClient{
                 .scheme("https")
                 .host(baseUrl)
                 .pathSegment("artist")
-                .pathSegment(artistId+"")
+                .pathSegment(artistId + "")
                 .pathSegment("albums")
                 .build()
                 .toUri();
@@ -85,7 +83,7 @@ public class MusicClient implements IMusicClient{
                 .scheme("https")
                 .host(baseUrl)
                 .pathSegment("album")
-                .pathSegment(albumId+"")
+                .pathSegment(albumId + "")
                 .pathSegment("tracks")
                 .build()
                 .toUri();
@@ -108,10 +106,10 @@ public class MusicClient implements IMusicClient{
                 .scheme("https")
                 .host(baseUrl)
                 .pathSegment("track")
-                .pathSegment(trackId+"")
+                .pathSegment(trackId + "")
                 .build()
                 .toUri();
-        return restClient.getForObject(uri,TrackDto.class);
+        return restClient.getForObject(uri, TrackDto.class);
     }
 
     @Override

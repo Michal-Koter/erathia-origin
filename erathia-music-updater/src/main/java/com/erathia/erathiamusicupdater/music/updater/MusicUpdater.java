@@ -15,9 +15,10 @@ import java.util.Optional;
 @Service
 @ComponentScan(basePackages = {"com.erathia.erathiaMusicClient", "com.erathia.erathiaData"})
 @RequiredArgsConstructor
-public class MusicUpdater implements IUpdateMusic{
+public class MusicUpdater implements IUpdateMusic {
     private final ICatalogData dataCatalog;
     private final IMusicClient musicClient;
+    private final ICatalogMapper mapperCatalog;
 
 
     @Override
@@ -27,7 +28,7 @@ public class MusicUpdater implements IUpdateMusic{
         ArtistDto artistDto = musicClient.getArtist(name.toLowerCase());
         List<AlbumDto> albumsDto = musicClient.getAlbums(artistDto.getId());
 
-        Artist artist = ArtistMapper.map(artistDto);
+        Artist artist = mapperCatalog.getArtistMapper().map(artistDto);
         Optional<Artist> optionalArtis = dataCatalog.getArtists().findBySourceId(artist.getSourceId());
         if (optionalArtis.isEmpty()) {
             dataCatalog.getArtists().save(artist);
@@ -38,11 +39,11 @@ public class MusicUpdater implements IUpdateMusic{
         }
 
         for (var albumDto : albumsDto) {
-            Album album = AlbumMapper.map(albumDto);
+            Album album = mapperCatalog.getAlbumMapper().map(albumDto);
             album.setArtist(artist);
             album.setGenre(findGenre(albumDto.getGenreId()));
             Optional<Album> optionalAlbum = dataCatalog.getAlbums().findBySourceId(album.getSourceId());
-            if (optionalAlbum.isPresent())  {
+            if (optionalAlbum.isPresent()) {
                 Album existedAlbum = optionalAlbum.get();
                 existedAlbum.update(album);
                 album = existedAlbum;
@@ -52,7 +53,7 @@ public class MusicUpdater implements IUpdateMusic{
             List<TrackDto> tracksDto = musicClient.getTracks(albumDto.getId());
             for (var t : tracksDto) {
                 TrackDto trackDto = musicClient.getTrack(t.getId());
-                Track track = TrackMapper.map(trackDto);
+                Track track = mapperCatalog.getTrackMapper().map(trackDto);
                 track.setAlbum(album);
                 Optional<Track> optionalTrack = dataCatalog.getTracks().findBySourceId(track.getSourceId());
                 if (optionalTrack.isPresent()) {
@@ -69,7 +70,7 @@ public class MusicUpdater implements IUpdateMusic{
     public void updateGenres() {
         List<GenreDto> genresDto = musicClient.getGenres();
         for (var genreDto : genresDto) {
-            Genre genre = GenreMapper.map(genreDto);
+            Genre genre = mapperCatalog.getGenreMapper().map(genreDto);
             var optionalGenre = dataCatalog.getGenres().findBySourceId(genre.getSourceId());
             if (optionalGenre.isEmpty()) {
                 dataCatalog.getGenres().save(genre);

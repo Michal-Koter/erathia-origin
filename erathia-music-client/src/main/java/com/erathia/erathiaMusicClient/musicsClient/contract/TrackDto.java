@@ -12,11 +12,9 @@ import java.time.LocalDate;
 public class TrackDto {
     private int id;
     private String title;
-    private String link;
     private int duration;
     @JsonProperty("track_position")
     private int trackPosition;
-    private int rank;
     @JsonProperty("release_date")
     private LocalDate releaseDate;
     private double bpm;

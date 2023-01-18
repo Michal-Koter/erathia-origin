@@ -12,7 +12,6 @@ import java.util.List;
 public class AlbumDto {
     private int id;
     private String title;
-    private String link;
     @JsonProperty("genre_id")
     private int genreId;
     private int fans;

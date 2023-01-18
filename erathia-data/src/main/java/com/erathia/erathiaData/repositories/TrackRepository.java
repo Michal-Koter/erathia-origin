@@ -7,4 +7,5 @@ import java.util.Optional;
 
 public interface TrackRepository extends JpaRepository<Track, Integer> {
     Optional<Track> findBySourceId(int sourceId);
+    Optional<Track> findByTitle(String title);
 }

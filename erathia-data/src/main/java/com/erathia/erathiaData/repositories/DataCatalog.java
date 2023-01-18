@@ -6,7 +6,7 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 @Getter
-public class DataCatalog implements ICatalogData{
+public class DataCatalog implements ICatalogData {
     private final AlbumRepository albums;
     private final ArtistRepository artists;
     private final GenreRepository genres;

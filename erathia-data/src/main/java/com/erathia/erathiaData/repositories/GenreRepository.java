@@ -7,4 +7,5 @@ import java.util.Optional;
 
 public interface GenreRepository extends JpaRepository<Genre, Integer> {
     Optional<Genre> findBySourceId(int sourceId);
+    Optional<Genre> findByName(String name);
 }

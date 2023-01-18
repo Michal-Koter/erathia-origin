@@ -17,23 +17,19 @@ public class Track {
     private int id;
 
     private String title;
-    private String link;
     private int duration;
-    private int trackPosition;
-    @Column(name = "`rank`")
-    private int rank;
+    private Integer trackPosition;
     private LocalDate releaseDate;
-    private double bpm;
+    private Double bpm;
+    @Column(columnDefinition = "integer default -1")
     private int sourceId;
     @ManyToOne
     private Album album;
 
     public void update(Track track) {
         this.title = track.getTitle();
-        this.link = track.getLink();
         this.duration = track.getDuration();
         this.trackPosition = track.getTrackPosition();
-        this.rank = track.getRank();
         this.releaseDate = track.releaseDate;
         this.bpm = track.getBpm();
         this.album = track.getAlbum();
@@ -41,7 +37,7 @@ public class Track {
 
     @Override
     public int hashCode() {
-        return Objects.hash(id,title,sourceId,link,duration,trackPosition,rank,releaseDate,bpm,album);
+        return Objects.hash(id, title, sourceId, duration, trackPosition, releaseDate, bpm, album);
     }
 
     @Override
@@ -49,6 +45,6 @@ public class Track {
         if (this == obj) return true;
         if (obj == null || getClass() != obj.getClass()) return false;
         Track track = (Track) obj;
-        return id==track.getId() && title.equals(track.getTitle()) && sourceId==track.getSourceId() && link.equals(track.getLink()) && duration==track.getDuration() && trackPosition==track.getTrackPosition() && rank==track.getRank() && releaseDate.equals(track.getReleaseDate()) && bpm==track.getBpm() && album.equals(track.getAlbum());
+        return id == track.getId() && title.equals(track.getTitle()) && sourceId == track.getSourceId() && duration == track.getDuration() && trackPosition.equals(track.getTrackPosition())  && releaseDate.equals(track.getReleaseDate()) && bpm.equals(track.getBpm()) && album.equals(track.getAlbum());
     }
 }

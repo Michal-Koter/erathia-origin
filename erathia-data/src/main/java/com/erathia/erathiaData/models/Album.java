@@ -18,9 +18,9 @@ public class Album {
     private int id;
 
     private String title;
-    private String link;
-    private int fans;
+    private Integer fans;
     private LocalDate releaseDate;
+    @Column(columnDefinition = "integer default -1")
     private int sourceId;
     @ManyToOne()
     private Artist artist;
@@ -31,7 +31,6 @@ public class Album {
 
     public void update(Album album) {
         this.title = album.getTitle();
-        this.link = album.getLink();
         this.fans = album.getFans();
         this.releaseDate = album.getReleaseDate();
         this.genre = album.getGenre();
@@ -39,7 +38,7 @@ public class Album {
 
     @Override
     public int hashCode() {
-        return Objects.hash(id,title,link,fans,releaseDate,sourceId,artist,tracks,genre);
+        return Objects.hash(id, title, fans, releaseDate, sourceId, artist, tracks, genre);
     }
 
     @Override
@@ -47,6 +46,6 @@ public class Album {
         if (this == obj) return true;
         if (obj == null || getClass() != obj.getClass()) return false;
         Album album = (Album) obj;
-        return id==album.getId() && title.equals(album.getTitle()) && link.equals(album.getLink()) && releaseDate.equals(album.getReleaseDate()) && sourceId==album.getSourceId() && artist.equals(album.getArtist()) && tracks.equals(album.getTracks()) && genre.equals(album.getGenre());
+        return id == album.getId() && title.equals(album.getTitle()) && releaseDate.equals(album.getReleaseDate()) && sourceId == album.getSourceId() && artist.equals(album.getArtist()) && tracks.equals(album.getTracks()) && genre.equals(album.getGenre());
     }
 }

@@ -2,7 +2,9 @@ package com.erathia.erathiamusicupdater.music.mappers;
 
 import com.erathia.erathiaMusicClient.musicsClient.contract.ArtistDto;
 import com.erathia.erathiaData.models.Artist;
+import org.springframework.stereotype.Component;
 
+@Component
 public class ArtistMapper implements IMap<ArtistDto, Artist> {
     public Artist map(ArtistDto artistDto) {
         Artist artist = new Artist();

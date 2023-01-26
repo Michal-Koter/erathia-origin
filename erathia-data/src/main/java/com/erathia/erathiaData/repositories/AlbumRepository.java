@@ -7,4 +7,6 @@ import java.util.Optional;
 
 public interface AlbumRepository extends JpaRepository<Album, Integer> {
     Optional<Album> findBySourceId(int sourceId);
+
+    Optional<Album> findByTitleAndAndArtistId(String title, Integer artistId);
 }

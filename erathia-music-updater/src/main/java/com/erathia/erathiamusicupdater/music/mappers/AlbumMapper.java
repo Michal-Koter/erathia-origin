@@ -2,7 +2,9 @@ package com.erathia.erathiamusicupdater.music.mappers;
 
 import com.erathia.erathiaMusicClient.musicsClient.contract.AlbumDto;
 import com.erathia.erathiaData.models.Album;
+import org.springframework.stereotype.Component;
 
+@Component
 public class AlbumMapper implements IMap<AlbumDto, Album> {
     public Album map(AlbumDto albumDto) {
         Album album = new Album();

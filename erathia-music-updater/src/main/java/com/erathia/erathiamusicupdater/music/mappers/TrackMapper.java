@@ -2,7 +2,9 @@ package com.erathia.erathiamusicupdater.music.mappers;
 
 import com.erathia.erathiaMusicClient.musicsClient.contract.TrackDto;
 import com.erathia.erathiaData.models.Track;
+import org.springframework.stereotype.Component;
 
+@Component
 public class TrackMapper implements IMap<TrackDto, Track> {
     public Track map(TrackDto trackDto) {
         Track track = new Track();

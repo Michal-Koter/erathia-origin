@@ -18,28 +18,34 @@ import java.util.Optional;
 public class MusicUpdater implements IUpdateMusic {
     private final ICatalogData dataCatalog;
     private final IMusicClient musicClient;
-    private final ICatalogMapper mapperCatalog;
-
-
+    private final ICollectMap mapCollector;
     @Override
     public void updateByArtistName(String name) {
         updateGenres();
 
+        name = name.replaceAll("%20"," ");
+
         ArtistDto artistDto = musicClient.getArtist(name.toLowerCase());
         List<AlbumDto> albumsDto = musicClient.getAlbums(artistDto.getId());
 
-        Artist artist = mapperCatalog.getArtistMapper().map(artistDto);
+        Artist artist = mapCollector.getArtistMapper().map(artistDto);
         Optional<Artist> optionalArtis = dataCatalog.getArtists().findBySourceId(artist.getSourceId());
-        if (optionalArtis.isEmpty()) {
-            dataCatalog.getArtists().save(artist);
-        } else {
+        if (optionalArtis.isPresent()) {
             Artist existedArtis = optionalArtis.get();
             existedArtis.update(artist);
-            dataCatalog.getArtists().save(existedArtis);
+            artist = existedArtis;
         }
+        dataCatalog.getArtists().save(artist);
+
 
         for (var albumDto : albumsDto) {
-            Album album = mapperCatalog.getAlbumMapper().map(albumDto);
+            Album album;
+            try {
+                album = mapCollector.getAlbumMapper().map(albumDto);
+            } catch (RuntimeException e) {
+                // tu będzie loggowanie
+                continue;
+            }
             album.setArtist(artist);
             album.setGenre(findGenre(albumDto.getGenreId()));
             Optional<Album> optionalAlbum = dataCatalog.getAlbums().findBySourceId(album.getSourceId());
@@ -52,16 +58,22 @@ public class MusicUpdater implements IUpdateMusic {
 
             List<TrackDto> tracksDto = musicClient.getTracks(albumDto.getId());
             for (var t : tracksDto) {
-                TrackDto trackDto = musicClient.getTrack(t.getId());
-                Track track = mapperCatalog.getTrackMapper().map(trackDto);
-                track.setAlbum(album);
-                Optional<Track> optionalTrack = dataCatalog.getTracks().findBySourceId(track.getSourceId());
-                if (optionalTrack.isPresent()) {
-                    Track existedTrack = optionalTrack.get();
-                    existedTrack.update(track);
-                    track = existedTrack;
+                TrackDto trackDto;
+                try {
+                    trackDto = musicClient.getTrack(t.getId());
+                    Track track = mapCollector.getTrackMapper().map(trackDto);
+                    track.setAlbum(album);
+                    Optional<Track> optionalTrack = dataCatalog.getTracks().findBySourceId(track.getSourceId());
+                    if (optionalTrack.isPresent()) {
+                        Track existedTrack = optionalTrack.get();
+                        existedTrack.update(track);
+                        track = existedTrack;
+                    }
+                    dataCatalog.getTracks().save(track);
+                } catch (RuntimeException e) {
+                    // tu będzie loggowanie
+                    continue;
                 }
-                dataCatalog.getTracks().save(track);
             }
         }
     }
@@ -70,7 +82,8 @@ public class MusicUpdater implements IUpdateMusic {
     public void updateGenres() {
         List<GenreDto> genresDto = musicClient.getGenres();
         for (var genreDto : genresDto) {
-            Genre genre = mapperCatalog.getGenreMapper().map(genreDto);
+//            Genre genre = genreMapper.map(genreDto);
+            Genre genre = mapCollector.getGenreMapper().map(genreDto);
             var optionalGenre = dataCatalog.getGenres().findBySourceId(genre.getSourceId());
             if (optionalGenre.isEmpty()) {
                 dataCatalog.getGenres().save(genre);

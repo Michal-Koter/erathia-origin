@@ -14,11 +14,11 @@ public class Artist {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id;
+    private Integer id;
 
     private String name;
     @Column(columnDefinition = "integer default -1")
-    private int sourceId;
+    private Integer sourceId;
     private Integer fans;
     @OneToMany(mappedBy = "artist")
     private List<Album> albums;
@@ -39,6 +39,6 @@ public class Artist {
         if (this == obj) return true;
         if (obj == null || getClass() != obj.getClass()) return false;
         Artist artist = (Artist) obj;
-        return id == artist.getId() && name.equals(artist.getName()) && sourceId == artist.getSourceId() && fans.equals(artist.getFans()) && albums.equals(artist.getAlbums());
+        return id.equals(artist.getId()) && name.equals(artist.getName()) && sourceId.equals(artist.getSourceId()) && fans.equals(artist.getFans()) && albums.equals(artist.getAlbums());
     }
 }

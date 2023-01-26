@@ -14,15 +14,15 @@ public class Track {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id;
+    private Integer id;
 
     private String title;
-    private int duration;
+    private Integer duration;
     private Integer trackPosition;
     private LocalDate releaseDate;
     private Double bpm;
     @Column(columnDefinition = "integer default -1")
-    private int sourceId;
+    private Integer sourceId;
     @ManyToOne
     private Album album;
 
@@ -30,7 +30,7 @@ public class Track {
         this.title = track.getTitle();
         this.duration = track.getDuration();
         this.trackPosition = track.getTrackPosition();
-        this.releaseDate = track.releaseDate;
+        this.releaseDate = track.getReleaseDate();
         this.bpm = track.getBpm();
         this.album = track.getAlbum();
     }
@@ -45,6 +45,6 @@ public class Track {
         if (this == obj) return true;
         if (obj == null || getClass() != obj.getClass()) return false;
         Track track = (Track) obj;
-        return id == track.getId() && title.equals(track.getTitle()) && sourceId == track.getSourceId() && duration == track.getDuration() && trackPosition.equals(track.getTrackPosition())  && releaseDate.equals(track.getReleaseDate()) && bpm.equals(track.getBpm()) && album.equals(track.getAlbum());
+        return id.equals(track.getId()) && title.equals(track.getTitle()) && sourceId.equals(track.getSourceId()) && duration.equals(track.getDuration()) && trackPosition.equals(track.getTrackPosition())  && releaseDate.equals(track.getReleaseDate()) && bpm.equals(track.getBpm()) && album.equals(track.getAlbum());
     }
 }

@@ -14,16 +14,17 @@ public class Genre {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id;
+    private Integer id;
 
     private String name;
     @Column(columnDefinition = "integer default -1")
-    private int sourceId;
+    private Integer sourceId;
     @OneToMany(mappedBy = "genre")
     private List<Album> albums;
 
     public void update(Genre genre) {
         this.name = genre.getName();
+        this.albums = genre.getAlbums();
     }
 
     @Override
@@ -36,6 +37,6 @@ public class Genre {
         if (this == obj) return true;
         if (obj == null || getClass() != obj.getClass()) return false;
         Genre genre = (Genre) obj;
-        return id == genre.getId() && name.equals(genre.getName()) && sourceId == genre.getSourceId() && albums.equals(genre.getAlbums());
+        return id.equals(genre.getId()) && name.equals(genre.getName()) && sourceId.equals(genre.getSourceId()) && albums.equals(genre.getAlbums());
     }
 }

@@ -41,7 +41,9 @@ public class GenreService implements IService<GenreDto, Genre>{
         if (optional.isPresent()) {
             throw new EntityExistsException();
         }
-        dataCatalog.getGenres().save(mapper.mapToEntity(genreDto));
+        Genre genre = mapper.mapToEntity(genreDto);
+        genre.setSourceId(-1);
+        dataCatalog.getGenres().save(genre);
     }
 
     public void update(int id, GenreDto genreDto) throws EntityNotFoundException {

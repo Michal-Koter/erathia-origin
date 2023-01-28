@@ -21,13 +21,13 @@ public class ArtistController {
 
     @GetMapping("/{id}")
     public ResponseEntity<Object> findById(@PathVariable int id) {
-        logger.trace("Run findByID(int), id={}",id);
+        logger.trace("Run findById(int), id={}",id);
         try {
             var result = service.findById(id);
             logger.info("Finish successfully findById(int)");
             return new ResponseEntity<>(result, HttpStatus.OK);
         } catch (EntityNotFoundException e){
-            logger.error("Finish failure findById(int)");
+            logger.warn("Finish failure findById(int)");
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         }
     }
@@ -47,7 +47,7 @@ public class ArtistController {
             logger.info("Finish successfully add(ArtistDto)");
             return new ResponseEntity<>(HttpStatus.CREATED);
         } catch (EntityExistsException e) {
-            logger.error("Finish failure add(ArtistDto)");
+            logger.warn("Finish failure add(ArtistDto)");
             return new ResponseEntity<>(HttpStatus.CONFLICT);
         }
     }
@@ -62,7 +62,7 @@ public class ArtistController {
             logger.info("Finish successfully update(int, ArtistDto)");
             return new ResponseEntity<>(HttpStatus.NO_CONTENT);
         } catch (EntityNotFoundException e) {
-            logger.error("Finish failure update(int,ArtistDto)");
+            logger.warn("Finish failure update(int,ArtistDto)");
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         }
     }
@@ -75,7 +75,7 @@ public class ArtistController {
             logger.info("Finish successfully delete(int)");
             return new ResponseEntity<>(HttpStatus.OK);
         } catch (EntityNotFoundException e) {
-            logger.info("Finish failure delete(int)");
+            logger.warn("Finish failure delete(int)");
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         }
     }

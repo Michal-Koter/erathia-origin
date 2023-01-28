@@ -27,7 +27,7 @@ public class TrackController {
             logger.info("Finish successfully findById(int)");
             return new ResponseEntity<>(result, HttpStatus.OK);
         } catch (EntityNotFoundException e){
-            logger.error("Finish failure findById(int)");
+            logger.warn("Finish failure findById(int)");
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         }
     }
@@ -47,7 +47,7 @@ public class TrackController {
             logger.info("Finish successfully add(TrackDto)");
             return new ResponseEntity<>(HttpStatus.CREATED);
         } catch (EntityExistsException e) {
-            logger.error("Finish failure add(TrackDto)");
+            logger.warn("Finish failure add(TrackDto)");
             return new ResponseEntity<>(HttpStatus.CONFLICT);
         }
     }
@@ -62,7 +62,7 @@ public class TrackController {
             logger.info("Finish successfully update(int, TrackDto)");
             return new ResponseEntity<>(HttpStatus.NO_CONTENT);
         } catch (EntityNotFoundException e) {
-            logger.error("Finish failure update(int, TrackDto)");
+            logger.warn("Finish failure update(int, TrackDto)");
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         }
     }
@@ -75,7 +75,7 @@ public class TrackController {
             logger.info("Finish successfully delete(int)");
             return new ResponseEntity<>(HttpStatus.OK);
         } catch (EntityNotFoundException e) {
-            logger.info("Finish failure delete(int)");
+            logger.warn("Finish failure delete(int)");
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         }
     }

@@ -10,5 +10,5 @@ public interface IService<DtoItem, EntityItem> {
     List<DtoItem> findAll();
     void add(DtoItem dtoItem) throws EntityExistsException;
     void update(int id, DtoItem dtoItem) throws EntityNotFoundException;
-    void delete(int id, DtoItem dtoItem) throws EntityNotFoundException;
+    void delete(int id) throws EntityNotFoundException;
 }

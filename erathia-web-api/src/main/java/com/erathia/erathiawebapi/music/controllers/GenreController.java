@@ -27,7 +27,7 @@ public class GenreController {
             logger.info("Finish successfully findById(id)");
             return new ResponseEntity<>(result, HttpStatus.OK);
         } catch (EntityNotFoundException e){
-            logger.error("Finish failure findById(id)");
+            logger.warn("Finish failure findById(id)");
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         }
     }
@@ -47,7 +47,7 @@ public class GenreController {
             logger.info("Finish successfully add(GenreDto)");
             return new ResponseEntity<>(HttpStatus.CREATED);
         } catch (EntityExistsException e) {
-            logger.error("Finish failure add(GenreDto)");
+            logger.warn("Finish failure add(GenreDto)");
             return new ResponseEntity<>(HttpStatus.CONFLICT);
         }
     }
@@ -62,7 +62,7 @@ public class GenreController {
             logger.info("Finish successfully update(id, GenreDto)");
             return new ResponseEntity<>(HttpStatus.NO_CONTENT);
         } catch (EntityNotFoundException e) {
-            logger.error("Finish failure update(id, GenreDto)");
+            logger.warn("Finish failure update(id, GenreDto)");
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         }
     }
@@ -75,7 +75,7 @@ public class GenreController {
             logger.info("Finish successfully delete(int)");
             return new ResponseEntity<>(HttpStatus.OK);
         } catch (EntityNotFoundException e) {
-            logger.info("Finish failure delete(int)");
+            logger.warn("Finish failure delete(int)");
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         }
     }

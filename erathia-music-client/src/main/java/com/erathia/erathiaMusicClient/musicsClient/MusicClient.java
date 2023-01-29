@@ -4,6 +4,8 @@ import com.erathia.erathiaMusicClient.musicsClient.contract.*;
 import com.erathia.erathiaMusicClient.musicsClient.contract.pages.*;
 import lombok.Getter;
 import lombok.Setter;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Component;
 import org.springframework.web.client.RestTemplate;
 import org.springframework.web.util.UriComponentsBuilder;
@@ -16,6 +18,7 @@ import java.util.List;
 @Setter
 @Component
 public class MusicClient implements IMusicClient {
+    private static final Logger logger = LoggerFactory.getLogger(MusicClient.class);
     private RestTemplate restClient;
     private final String baseUrl = "api.deezer.com";
 
@@ -25,6 +28,7 @@ public class MusicClient implements IMusicClient {
 
     @Override
     public ArtistDto getArtist(String name) {
+        logger.info("Run getArtist(String), name={}", name);
         URI uri = UriComponentsBuilder.newInstance()
                 .scheme("https")
                 .host(baseUrl)
@@ -33,6 +37,7 @@ public class MusicClient implements IMusicClient {
                 .queryParam("limit", 1)
                 .build()
                 .toUri();
+        logger.debug("Send request: {}", uri);
         PageTrackDto page = restClient.getForObject(uri, PageTrackDto.class);
         if (!page.getData().isEmpty()) {
             TrackDto track = page.getData().get(0);
@@ -44,6 +49,7 @@ public class MusicClient implements IMusicClient {
 
     @Override
     public ArtistDto getArtist(int id) {
+        logger.info("Run getArtist(int), id={}", id);
         URI uri = UriComponentsBuilder.newInstance()
                 .scheme("https")
                 .host(baseUrl)
@@ -51,11 +57,13 @@ public class MusicClient implements IMusicClient {
                 .pathSegment(id + "")
                 .build()
                 .toUri();
+        logger.debug("Send request: {}", uri);
         return restClient.getForObject(uri, ArtistDto.class);
     }
 
     @Override
     public List<AlbumDto> getAlbums(int artistId) {
+        logger.info("Run getAlbums(int), artistId={}",artistId);
         URI uri = UriComponentsBuilder.newInstance()
                 .scheme("https")
                 .host(baseUrl)
@@ -65,10 +73,12 @@ public class MusicClient implements IMusicClient {
                 .build()
                 .toUri();
         List<AlbumDto> albums = new ArrayList<>();
+        logger.debug("Send request: {}", uri);
         PageAlbumDto page = restClient.getForObject(uri, PageAlbumDto.class);
         while (true) {
             albums.addAll(page.getData());
             if (page.getNext() != null) {
+                logger.debug("Send request: {}", page.getNext());
                 page = restClient.getForObject(page.getNext(), PageAlbumDto.class);
             } else {
                 break;
@@ -79,6 +89,7 @@ public class MusicClient implements IMusicClient {
 
     @Override
     public List<TrackDto> getTracks(int albumId) {
+        logger.info("Run getTracks(int), albumId={}",albumId);
         URI uri = UriComponentsBuilder.newInstance()
                 .scheme("https")
                 .host(baseUrl)
@@ -88,10 +99,12 @@ public class MusicClient implements IMusicClient {
                 .build()
                 .toUri();
         List<TrackDto> tracks = new ArrayList<>();
+        logger.debug("Send request: {}", uri);
         PageTrackDto page = restClient.getForObject(uri, PageTrackDto.class);
         while (page != null) {
             tracks.addAll(page.getData());
             if (page.getNext() != null) {
+                logger.debug("Send request: {}", page.getNext());
                 page = restClient.getForObject(page.getNext(), PageTrackDto.class);
             } else {
                 break;
@@ -102,6 +115,7 @@ public class MusicClient implements IMusicClient {
 
     @Override
     public TrackDto getTrack(int trackId) {
+        logger.info("Run getTrack(int), trackId={}", trackId);
         URI uri = UriComponentsBuilder.newInstance()
                 .scheme("https")
                 .host(baseUrl)
@@ -109,17 +123,20 @@ public class MusicClient implements IMusicClient {
                 .pathSegment(trackId + "")
                 .build()
                 .toUri();
+        logger.debug("Send request: {}", uri);
         return restClient.getForObject(uri, TrackDto.class);
     }
 
     @Override
     public List<GenreDto> getGenres() {
+        logger.info("Run getGenres()");
         URI uri = UriComponentsBuilder.newInstance()
                 .scheme("https")
                 .host(baseUrl)
                 .pathSegment("genre")
                 .build()
                 .toUri();
+        logger.debug("Send request: {}", uri);
         PageGenreDto page = restClient.getForObject(uri, PageGenreDto.class);
         if (!page.getData().isEmpty()) {
             return page.getData();

@@ -21,8 +21,10 @@ public class UpdaterController {
         logger.info("Run updateByArtistName(String), name={}",name);
         try {
             musicUpdater.updateByArtistName(name);
+            logger.info("Finish successfully updateByArtistName(String)");
             return new ResponseEntity<>(HttpStatus.OK);
         } catch (RuntimeException e) {
+            logger.warn("Finish failure updateByArtistName(String)");
             return new ResponseEntity<>(HttpStatus.SERVICE_UNAVAILABLE);
         }
     }

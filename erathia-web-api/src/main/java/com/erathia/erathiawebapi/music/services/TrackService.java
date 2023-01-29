@@ -66,6 +66,7 @@ public class TrackService implements IService<TrackDto, Track> {
             logger.warn("Similar Track found in DB");
             throw new EntityExistsException();
         }
+        track.setSourceId(-1);
 
         logger.debug("Save track to DB");
         dataCatalog.getTracks().save(track);

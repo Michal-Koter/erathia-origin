@@ -29,14 +29,22 @@ public class ArtistController {
         } catch (EntityNotFoundException e){
             logger.warn("Finish failure findById(int)");
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        } catch (RuntimeException e) {
+            logger.warn("Finish failure findById(int), exception: {}", e.getMessage());
+            return new ResponseEntity<>(HttpStatus.SERVICE_UNAVAILABLE);
         }
     }
 
     @GetMapping()
     public ResponseEntity<Object> findAll() {
         logger.info("Run findAll()");
-        var result = service.findAll();
-        return new ResponseEntity<>(result, HttpStatus.OK);
+        try {
+            var result = service.findAll();
+            return new ResponseEntity<>(result, HttpStatus.OK);
+        } catch (RuntimeException e) {
+            logger.warn("Finish failure findAll(), exception: {}", e.getMessage());
+            return new ResponseEntity<>(HttpStatus.SERVICE_UNAVAILABLE);
+        }
     }
 
     @PostMapping("/add")
@@ -49,10 +57,11 @@ public class ArtistController {
         } catch (EntityExistsException e) {
             logger.warn("Finish failure add(ArtistDto)");
             return new ResponseEntity<>(HttpStatus.CONFLICT);
+        } catch (RuntimeException e) {
+            logger.warn("Finish failure add(ArtistDto), exception: {}", e.getMessage());
+            return new ResponseEntity<>(HttpStatus.SERVICE_UNAVAILABLE);
         }
     }
-
-// dodać GET update, który prześle użytkownikowi żądany obiekt
 
     @PutMapping("/update/{id}")
     public ResponseEntity<Object> update(@PathVariable int id, @RequestBody ArtistDto artistDto) {
@@ -64,6 +73,9 @@ public class ArtistController {
         } catch (EntityNotFoundException e) {
             logger.warn("Finish failure update(int,ArtistDto)");
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        } catch (RuntimeException e) {
+            logger.warn("Finish failure update(int,ArtistDto), exception: {}", e.getMessage());
+            return new ResponseEntity<>(HttpStatus.SERVICE_UNAVAILABLE);
         }
     }
 
@@ -77,6 +89,9 @@ public class ArtistController {
         } catch (EntityNotFoundException e) {
             logger.warn("Finish failure delete(int)");
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        } catch (RuntimeException e) {
+            logger.warn("Finish failure delete(int), exception: {}", e.getMessage());
+            return new ResponseEntity<>(HttpStatus.SERVICE_UNAVAILABLE);
         }
     }
 }

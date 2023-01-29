@@ -24,7 +24,7 @@ public class GenreMapper implements IMapEntityDto<GenreDto, Genre> {
         logger.debug("Run mapToEntity(GenreDto), genreDto={}",genreDto);
         Genre genre = new Genre();
         genre.setId(genreDto.getId());
-        genre.setName(genreDto.getName());
-        return null;
+        genre.setName(genreDto.getName().toLowerCase());
+        return genre;
     }
 }

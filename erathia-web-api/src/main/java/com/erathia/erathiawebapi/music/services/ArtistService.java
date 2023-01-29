@@ -83,7 +83,8 @@ public class ArtistService implements IService<ArtistDto, Artist> {
         Artist artist = optional.get();
 
         logger.debug("Set new artist properties");
-        artist.update(mapper.mapToEntity(artistDto));
+        artist.setName(artistDto.getName());
+        artist.setFans(artistDto.getFans());
 
         logger.debug("save updated artist to DB");
         dataCatalog.getArtists().save(artist);

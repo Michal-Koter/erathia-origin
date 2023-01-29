@@ -44,7 +44,8 @@ public class MusicUpdater implements IUpdateMusic {
             Artist existedArtis = optionalArtis.get();
 
             logger.debug("Set new artist properties");
-            existedArtis.update(artist);
+            existedArtis.setName(artist.getName());
+            existedArtis.setFans(artist.getFans());
             artist = existedArtis;
         }
         logger.debug("Save artist to DB");

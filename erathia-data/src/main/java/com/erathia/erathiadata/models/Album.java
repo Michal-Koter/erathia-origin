@@ -29,15 +29,6 @@ public class Album {
     @ManyToOne
     private Genre genre;
 
-    public void update(Album album) {
-        this.title = album.getTitle();
-        this.fans = album.getFans();
-        this.releaseDate = album.getReleaseDate();
-        this.artist = album.getArtist();
-        this.tracks = album.getTracks();
-        this.genre = album.getGenre();
-    }
-
     @Override
     public int hashCode() {
         return Objects.hash(id, title, fans, releaseDate, sourceId, artist, tracks, genre);

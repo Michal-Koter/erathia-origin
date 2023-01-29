@@ -90,10 +90,18 @@ public class AlbumService implements IService<AlbumDto, Album>{
         Album album = optional.get();
 
         logger.debug("Set new album properties");
-        album.update(albumMapper.mapToEntity(albumDto));
-        logger.debug("Set album artist");
+        album.setTitle(albumDto.getTitle());
+        album.setFans(albumDto.getFans());
+        album.setReleaseDate(albumDto.getReleaseDate());
         album.setArtist(
-                dataCatalog.getArtists().findById(albumDto.getArtist()).orElse(null)
+                dataCatalog.getArtists()
+                        .findById(albumDto.getId())
+                        .orElse(null)
+                );
+        album.setGenre(
+                dataCatalog.getGenres()
+                        .findByName(albumDto.getGenre().toLowerCase())
+                        .orElse(null)
         );
 
         logger.debug("Save updated album to DB");

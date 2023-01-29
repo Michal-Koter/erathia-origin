@@ -22,11 +22,6 @@ public class Genre {
     @OneToMany(mappedBy = "genre")
     private List<Album> albums;
 
-    public void update(Genre genre) {
-        this.name = genre.getName();
-        this.albums = genre.getAlbums();
-    }
-
     @Override
     public int hashCode() {
         return Objects.hash(id, name, sourceId, albums);

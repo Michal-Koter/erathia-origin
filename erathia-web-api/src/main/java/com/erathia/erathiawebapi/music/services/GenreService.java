@@ -78,7 +78,7 @@ public class GenreService implements IService<GenreDto, Genre>{
         }
         Genre genre = optional.get();
         logger.debug("Set new genre properties");
-        genre.update(mapper.mapToEntity(genreDto));
+        genre.setName(genreDto.getName().toLowerCase());
         logger.debug("Save genre to DB");
         dataCatalog.getGenres().save(genre);
 

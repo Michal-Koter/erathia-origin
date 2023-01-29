@@ -1,6 +1,6 @@
 package com.erathia.erathiawebapi.music.controllers;
 
-import com.erathia.erathiaData.models.Genre;
+import com.erathia.erathiadata.models.Genre;
 import com.erathia.erathiawebapi.contracts.GenreDto;
 import com.erathia.erathiawebapi.music.services.IService;
 import jakarta.persistence.EntityExistsException;

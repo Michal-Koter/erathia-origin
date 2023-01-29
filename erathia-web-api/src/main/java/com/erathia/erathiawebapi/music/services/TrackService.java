@@ -1,7 +1,7 @@
 package com.erathia.erathiawebapi.music.services;
 
-import com.erathia.erathiaData.models.Track;
-import com.erathia.erathiaData.repositories.ICatalogData;
+import com.erathia.erathiadata.models.Track;
+import com.erathia.erathiadata.repositories.ICatalogData;
 import com.erathia.erathiawebapi.contracts.TrackDto;
 import com.erathia.erathiawebapi.music.mappers.IMapEntityDto;
 import jakarta.persistence.EntityExistsException;
@@ -16,7 +16,7 @@ import java.util.List;
 
 @Service
 @RequiredArgsConstructor
-@ComponentScan(basePackages = {"com.erathia.erathiaData"})
+@ComponentScan(basePackages = {"com.erathia.erathiadata"})
 public class TrackService implements IService<TrackDto, Track> {
     private static final Logger logger = LoggerFactory.getLogger(TrackService.class);
     private final ICatalogData dataCatalog;

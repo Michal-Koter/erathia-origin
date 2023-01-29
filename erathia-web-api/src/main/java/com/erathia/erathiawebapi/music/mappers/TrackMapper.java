@@ -1,6 +1,6 @@
 package com.erathia.erathiawebapi.music.mappers;
 
-import com.erathia.erathiaData.models.Track;
+import com.erathia.erathiadata.models.Track;
 import com.erathia.erathiawebapi.contracts.TrackDto;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

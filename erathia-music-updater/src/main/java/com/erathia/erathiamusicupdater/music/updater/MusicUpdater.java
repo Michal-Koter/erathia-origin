@@ -1,9 +1,9 @@
 package com.erathia.erathiamusicupdater.music.updater;
 
-import com.erathia.erathiaMusicClient.musicsClient.*;
-import com.erathia.erathiaMusicClient.musicsClient.contract.*;
-import com.erathia.erathiaData.models.*;
-import com.erathia.erathiaData.repositories.*;
+import com.erathia.erathiamusicclient.musicsClient.*;
+import com.erathia.erathiamusicclient.musicsClient.contract.*;
+import com.erathia.erathiadata.models.*;
+import com.erathia.erathiadata.repositories.*;
 import com.erathia.erathiamusicupdater.music.mappers.*;
 import lombok.RequiredArgsConstructor;
 import org.slf4j.Logger;
@@ -15,7 +15,7 @@ import java.util.List;
 import java.util.Optional;
 
 @Service
-@ComponentScan(basePackages = {"com.erathia.erathiaMusicClient", "com.erathia.erathiaData"})
+@ComponentScan(basePackages = {"com.erathia.erathiamusicclient", "com.erathia.erathiadata"})
 @RequiredArgsConstructor
 public class MusicUpdater implements IUpdateMusic {
     private static final Logger logger = LoggerFactory.getLogger(MusicUpdater.class);

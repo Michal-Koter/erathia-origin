@@ -17,8 +17,7 @@ public class PageTrackDto {
     @Override
     public String toString() {
         return "PageTrackDto{" +
-                "data=" + data +
-                ", total=" + total +
+                "total=" + total +
                 ", prev='" + prev + '\'' +
                 ", next='" + next + '\'' +
                 '}';

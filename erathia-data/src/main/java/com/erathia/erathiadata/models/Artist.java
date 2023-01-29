@@ -43,7 +43,7 @@ public class Artist {
                 ", name='" + name + '\'' +
                 ", sourceId=" + sourceId +
                 ", fans=" + fans +
-                ", albums=" + albums +
+                ", albumsCount=" + albums.size() +
                 '}';
     }
 }

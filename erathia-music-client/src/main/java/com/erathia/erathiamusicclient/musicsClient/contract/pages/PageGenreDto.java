@@ -17,8 +17,7 @@ public class PageGenreDto {
     @Override
     public String toString() {
         return "PageGenreDto{" +
-                "data=" + data +
-                ", total=" + total +
+                "total=" + total +
                 ", prev='" + prev + '\'' +
                 ", next='" + next + '\'' +
                 '}';

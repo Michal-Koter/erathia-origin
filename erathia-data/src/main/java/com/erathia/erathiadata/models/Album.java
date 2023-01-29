@@ -50,9 +50,9 @@ public class Album {
                 ", fans=" + fans +
                 ", releaseDate=" + releaseDate +
                 ", sourceId=" + sourceId +
-                ", artist=" + artist +
-                ", tracks=" + tracks +
-                ", genre=" + genre +
+                ", artist=" + artist.getName() +
+                ", tracksCount=" + tracks.size() +
+                ", genre=" + genre.getName() +
                 '}';
     }
 }

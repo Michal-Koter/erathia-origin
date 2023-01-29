@@ -41,7 +41,7 @@ public class Genre {
                 "id=" + id +
                 ", name='" + name + '\'' +
                 ", sourceId=" + sourceId +
-                ", albums=" + albums +
+                ", albumsCount=" + albums.size() +
                 '}';
     }
 }

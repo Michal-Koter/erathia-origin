@@ -17,8 +17,7 @@ public class PageAlbumDto {
     @Override
     public String toString() {
         return "PageAlbumDto{" +
-                "data=" + data +
-                ", total=" + total +
+                "total=" + total +
                 ", prev='" + prev + '\'' +
                 ", next='" + next + '\'' +
                 '}';

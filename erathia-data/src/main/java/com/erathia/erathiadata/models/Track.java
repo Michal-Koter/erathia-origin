@@ -48,8 +48,7 @@ public class Track {
                 ", trackPosition=" + trackPosition +
                 ", releaseDate=" + releaseDate +
                 ", bpm=" + bpm +
-                ", sourceId=" + sourceId +
-                ", album=" + album +
+                ", sourceId=TitleName=" + album.getTitle() +
                 '}';
     }
 }

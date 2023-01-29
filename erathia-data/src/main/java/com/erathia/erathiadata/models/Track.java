@@ -26,15 +26,6 @@ public class Track {
     @ManyToOne
     private Album album;
 
-    public void update(Track track) {
-        this.title = track.getTitle();
-        this.duration = track.getDuration();
-        this.trackPosition = track.getTrackPosition();
-        this.releaseDate = track.getReleaseDate();
-        this.bpm = track.getBpm();
-        this.album = track.getAlbum();
-    }
-
     @Override
     public int hashCode() {
         return Objects.hash(id, title, sourceId, duration, trackPosition, releaseDate, bpm, album);

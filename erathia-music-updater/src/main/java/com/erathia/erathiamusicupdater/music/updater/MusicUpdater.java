@@ -98,7 +98,12 @@ public class MusicUpdater implements IUpdateMusic {
                     Track existedTrack = optionalTrack.get();
 
                     logger.debug("Set new track properties");
-                    existedTrack.update(track);
+                    existedTrack.setTitle(track.getTitle());
+                    existedTrack.setDuration(track.getDuration());
+                    existedTrack.setTrackPosition(track.getTrackPosition());
+                    existedTrack.setReleaseDate(track.getReleaseDate());
+                    existedTrack.setBpm(track.getBpm());
+                    existedTrack.setAlbum(track.getAlbum());
                     track = existedTrack;
                 }
                 logger.debug("Save track to DB");

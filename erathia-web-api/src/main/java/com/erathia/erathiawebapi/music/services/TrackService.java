@@ -86,7 +86,15 @@ public class TrackService implements IService<TrackDto, Track> {
         }
         Track track = optional.get();
         logger.debug("Set new track properties");
-        track.update(mapper.mapToEntity(trackDto));
+        track.setTitle(trackDto.getTitle());
+        track.setDuration(trackDto.getDuration());
+        track.setTrackPosition(trackDto.getTrackPosition());
+        track.setReleaseDate(trackDto.getReleaseDate());
+        track.setBpm(trackDto.getBpm());
+        track.setAlbum(
+                dataCatalog.getAlbums().findById(trackDto.getId()).orElse(null)
+        );
+
         logger.debug("Save updated album to DB");
         dataCatalog.getTracks().save(track);
         logger.info("Finish update(int,TrackDto)");

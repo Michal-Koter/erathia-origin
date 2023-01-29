@@ -1,4 +1,4 @@
-package com.erathia.erathiawebapi.contracts;
+package com.erathia.erathiawebapi.music.contracts;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -9,16 +9,14 @@ import lombok.Setter;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-public class ArtistDto {
+public class GenreDto {
     private Integer id;
-    private Integer fans;
     private String name;
 
     @Override
     public String toString() {
-        return "ArtistDto{" +
+        return "GenreDto{" +
                 "id=" + id +
-                ", fans=" + fans +
                 ", name='" + name + '\'' +
                 '}';
     }

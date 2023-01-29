@@ -2,7 +2,7 @@ package com.erathia.erathiawebapi.music.services;
 
 import com.erathia.erathiadata.models.Artist;
 import com.erathia.erathiadata.repositories.ICatalogData;
-import com.erathia.erathiawebapi.contracts.ArtistDto;
+import com.erathia.erathiawebapi.music.contracts.ArtistDto;
 import com.erathia.erathiawebapi.music.mappers.IMapEntityDto;
 import jakarta.persistence.EntityExistsException;
 import jakarta.persistence.EntityNotFoundException;

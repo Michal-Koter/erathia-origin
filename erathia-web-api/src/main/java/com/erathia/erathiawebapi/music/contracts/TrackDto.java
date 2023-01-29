@@ -1,4 +1,4 @@
-package com.erathia.erathiawebapi.contracts;
+package com.erathia.erathiawebapi.music.contracts;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -11,23 +11,25 @@ import java.time.LocalDate;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-public class AlbumDto {
+public class TrackDto {
     private Integer id;
-    private Integer fans;
+    private Double bpm;
+    private Integer duration;
     private LocalDate releaseDate;
     private String title;
-    private Integer artist;
-    private String genre;
+    private Integer trackPosition;
+    private Integer album;
 
     @Override
     public String toString() {
-        return "AlbumDto{" +
+        return "TrackDto{" +
                 "id=" + id +
-                ", fans=" + fans +
+                ", bpm=" + bpm +
+                ", duration=" + duration +
                 ", releaseDate=" + releaseDate +
                 ", title='" + title + '\'' +
-                ", artist=" + artist +
-                ", genre='" + genre + '\'' +
+                ", trackPosition=" + trackPosition +
+                ", album=" + album +
                 '}';
     }
 }

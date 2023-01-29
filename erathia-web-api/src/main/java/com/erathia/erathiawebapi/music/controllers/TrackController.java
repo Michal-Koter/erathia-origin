@@ -1,7 +1,7 @@
 package com.erathia.erathiawebapi.music.controllers;
 
 import com.erathia.erathiadata.models.Track;
-import com.erathia.erathiawebapi.contracts.TrackDto;
+import com.erathia.erathiawebapi.music.contracts.TrackDto;
 import com.erathia.erathiawebapi.music.services.IService;
 import jakarta.persistence.EntityExistsException;
 import jakarta.persistence.EntityNotFoundException;

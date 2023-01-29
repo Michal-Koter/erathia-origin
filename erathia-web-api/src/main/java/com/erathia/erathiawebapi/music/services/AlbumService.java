@@ -3,6 +3,7 @@ package com.erathia.erathiawebapi.music.services;
 import com.erathia.erathiadata.models.*;
 import com.erathia.erathiadata.repositories.*;
 import com.erathia.erathiawebapi.contracts.*;
+import com.erathia.erathiawebapi.music.contracts.AlbumDto;
 import com.erathia.erathiawebapi.music.mappers.*;
 import jakarta.persistence.EntityExistsException;
 import jakarta.persistence.EntityNotFoundException;

@@ -1,7 +1,7 @@
 package com.erathia.erathiawebapi.music.mappers;
 
 import com.erathia.erathiadata.models.Genre;
-import com.erathia.erathiawebapi.contracts.GenreDto;
+import com.erathia.erathiawebapi.music.contracts.GenreDto;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Component;

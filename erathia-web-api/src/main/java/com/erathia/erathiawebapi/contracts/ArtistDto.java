@@ -10,7 +10,7 @@ import lombok.Setter;
 @NoArgsConstructor
 @AllArgsConstructor
 public class ArtistDto {
-    private int id;
+    private Integer id;
     private Integer fans;
     private String name;
 }

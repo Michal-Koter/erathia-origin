@@ -1,7 +1,7 @@
 package com.erathia.erathiamusicupdater.music.mappers;
 
-import com.erathia.erathiaData.models.*;
-import com.erathia.erathiaMusicClient.musicsClient.contract.*;
+import com.erathia.erathiadata.models.*;
+import com.erathia.erathiamusicclient.musicsClient.contract.*;
 
 public interface ICollectMap {
     IMap<AlbumDto, Album> getAlbumMapper();

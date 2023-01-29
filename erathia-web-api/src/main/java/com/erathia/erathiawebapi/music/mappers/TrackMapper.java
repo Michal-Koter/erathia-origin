@@ -1,13 +1,18 @@
 package com.erathia.erathiawebapi.music.mappers;
 
-import com.erathia.erathiaData.models.Track;
+import com.erathia.erathiadata.models.Track;
 import com.erathia.erathiawebapi.contracts.TrackDto;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Component;
 
 @Component
 public class TrackMapper implements IMapEntityDto<TrackDto, Track> {
+    private static final Logger logger = LoggerFactory.getLogger(TrackMapper.class);
+
     @Override
     public TrackDto mapToDto(Track track) {
+        logger.debug("Run mapToDto(Track), track={}", track);
         TrackDto trackDto = new TrackDto();
         trackDto.setBpm(track.getBpm());
         trackDto.setTrackPosition(track.getTrackPosition());
@@ -20,12 +25,9 @@ public class TrackMapper implements IMapEntityDto<TrackDto, Track> {
 
     @Override
     public Track mapToEntity(TrackDto trackDto) {
+        logger.debug("Run mapToEntity(TrackDto), trackDto={}", trackDto);
         Track track = new Track();
-        if ((Integer) trackDto.getId() != null) {
-            track.setSourceId(trackDto.getId());
-        } else {
-            track.setSourceId(-1);
-        }
+        track.setId(trackDto.getId());
         track.setBpm(trackDto.getBpm());
         track.setTrackPosition(trackDto.getTrackPosition());
         track.setDuration(trackDto.getDuration());

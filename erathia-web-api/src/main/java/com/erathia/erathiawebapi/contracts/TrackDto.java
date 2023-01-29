@@ -12,9 +12,9 @@ import java.time.LocalDate;
 @NoArgsConstructor
 @AllArgsConstructor
 public class TrackDto {
-    private int id;
+    private Integer id;
     private Double bpm;
-    private int duration;
+    private Integer duration;
     private LocalDate releaseDate;
     private String title;
     private Integer trackPosition;

@@ -41,4 +41,18 @@ public class Album {
         Album album = (Album) obj;
         return id.equals(album.getId()) && title.equals(album.getTitle()) && releaseDate.equals(album.getReleaseDate()) && sourceId.equals(album.getSourceId()) && artist.equals(album.getArtist()) && tracks.equals(album.getTracks()) && genre.equals(album.getGenre());
     }
+
+    @Override
+    public String toString() {
+        return "Album{" +
+                "id=" + id +
+                ", title='" + title + '\'' +
+                ", fans=" + fans +
+                ", releaseDate=" + releaseDate +
+                ", sourceId=" + sourceId +
+                ", artist=" + artist +
+                ", tracks=" + tracks +
+                ", genre=" + genre +
+                '}';
+    }
 }

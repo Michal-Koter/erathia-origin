@@ -38,4 +38,18 @@ public class Track {
         Track track = (Track) obj;
         return id.equals(track.getId()) && title.equals(track.getTitle()) && sourceId.equals(track.getSourceId()) && duration.equals(track.getDuration()) && trackPosition.equals(track.getTrackPosition())  && releaseDate.equals(track.getReleaseDate()) && bpm.equals(track.getBpm()) && album.equals(track.getAlbum());
     }
+
+    @Override
+    public String toString() {
+        return "Track{" +
+                "id=" + id +
+                ", title='" + title + '\'' +
+                ", duration=" + duration +
+                ", trackPosition=" + trackPosition +
+                ", releaseDate=" + releaseDate +
+                ", bpm=" + bpm +
+                ", sourceId=" + sourceId +
+                ", album=" + album +
+                '}';
+    }
 }

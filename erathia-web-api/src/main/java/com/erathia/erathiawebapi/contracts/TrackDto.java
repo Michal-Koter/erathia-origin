@@ -19,4 +19,17 @@ public class TrackDto {
     private String title;
     private Integer trackPosition;
     private Integer album;
+
+    @Override
+    public String toString() {
+        return "TrackDto{" +
+                "id=" + id +
+                ", bpm=" + bpm +
+                ", duration=" + duration +
+                ", releaseDate=" + releaseDate +
+                ", title='" + title + '\'' +
+                ", trackPosition=" + trackPosition +
+                ", album=" + album +
+                '}';
+    }
 }

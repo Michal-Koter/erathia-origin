@@ -19,4 +19,18 @@ public class TrackDto {
     private double bpm;
     private ArtistDto artist;
     private AlbumDto album;
+
+    @Override
+    public String toString() {
+        return "TrackDto{" +
+                "id=" + id +
+                ", title='" + title + '\'' +
+                ", duration=" + duration +
+                ", trackPosition=" + trackPosition +
+                ", releaseDate=" + releaseDate +
+                ", bpm=" + bpm +
+                ", artist=" + artist +
+                ", album=" + album +
+                '}';
+    }
 }

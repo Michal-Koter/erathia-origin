@@ -18,4 +18,16 @@ public class AlbumDto {
     private String title;
     private Integer artist;
     private String genre;
+
+    @Override
+    public String toString() {
+        return "AlbumDto{" +
+                "id=" + id +
+                ", fans=" + fans +
+                ", releaseDate=" + releaseDate +
+                ", title='" + title + '\'' +
+                ", artist=" + artist +
+                ", genre='" + genre + '\'' +
+                '}';
+    }
 }

@@ -34,4 +34,14 @@ public class Genre {
         Genre genre = (Genre) obj;
         return id.equals(genre.getId()) && name.equals(genre.getName()) && sourceId.equals(genre.getSourceId()) && albums.equals(genre.getAlbums());
     }
+
+    @Override
+    public String toString() {
+        return "Genre{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", sourceId=" + sourceId +
+                ", albums=" + albums +
+                '}';
+    }
 }

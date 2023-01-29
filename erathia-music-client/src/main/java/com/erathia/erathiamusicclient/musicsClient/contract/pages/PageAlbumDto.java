@@ -13,4 +13,14 @@ public class PageAlbumDto {
     private int total;
     private String prev;
     private String next;
+
+    @Override
+    public String toString() {
+        return "PageAlbumDto{" +
+                "data=" + data +
+                ", total=" + total +
+                ", prev='" + prev + '\'' +
+                ", next='" + next + '\'' +
+                '}';
+    }
 }

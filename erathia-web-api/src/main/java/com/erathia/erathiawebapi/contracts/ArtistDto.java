@@ -13,4 +13,13 @@ public class ArtistDto {
     private Integer id;
     private Integer fans;
     private String name;
+
+    @Override
+    public String toString() {
+        return "ArtistDto{" +
+                "id=" + id +
+                ", fans=" + fans +
+                ", name='" + name + '\'' +
+                '}';
+    }
 }

@@ -19,4 +19,17 @@ public class AlbumDto {
     private LocalDate releaseDate;
     private ArtistDto artist;
     private List<TrackDto> tracks;
+
+    @Override
+    public String toString() {
+        return "AlbumDto{" +
+                "id=" + id +
+                ", title='" + title + '\'' +
+                ", genreId=" + genreId +
+                ", fans=" + fans +
+                ", releaseDate=" + releaseDate +
+                ", artist=" + artist +
+                ", tracks=" + tracks +
+                '}';
+    }
 }

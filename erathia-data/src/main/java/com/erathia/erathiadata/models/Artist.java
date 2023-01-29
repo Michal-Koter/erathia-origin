@@ -35,4 +35,15 @@ public class Artist {
         Artist artist = (Artist) obj;
         return id.equals(artist.getId()) && name.equals(artist.getName()) && sourceId.equals(artist.getSourceId()) && fans.equals(artist.getFans()) && albums.equals(artist.getAlbums());
     }
+
+    @Override
+    public String toString() {
+        return "Artist{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", sourceId=" + sourceId +
+                ", fans=" + fans +
+                ", albums=" + albums +
+                '}';
+    }
 }

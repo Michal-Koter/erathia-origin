@@ -24,7 +24,7 @@ public class UpdaterController {
             logger.info("Finish successfully updateByArtistName(String)");
             return new ResponseEntity<>(HttpStatus.OK);
         } catch (RuntimeException e) {
-            logger.warn("Finish failure updateByArtistName(String)");
+            logger.warn("Finish failure updateByArtistName(String), exception: {}", e.getMessage());
             return new ResponseEntity<>(HttpStatus.SERVICE_UNAVAILABLE);
         }
     }

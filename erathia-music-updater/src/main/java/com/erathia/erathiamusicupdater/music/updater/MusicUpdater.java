@@ -44,7 +44,8 @@ public class MusicUpdater implements IUpdateMusic {
             Artist existedArtis = optionalArtis.get();
 
             logger.debug("Set new artist properties");
-            existedArtis.update(artist);
+            existedArtis.setName(artist.getName());
+            existedArtis.setFans(artist.getFans());
             artist = existedArtis;
         }
         logger.debug("Save artist to DB");
@@ -68,7 +69,11 @@ public class MusicUpdater implements IUpdateMusic {
                 Album existedAlbum = optionalAlbum.get();
 
                 logger.debug("Set new album properties");
-                existedAlbum.update(album);
+                existedAlbum.setTitle(album.getTitle());
+                existedAlbum.setFans(album.getFans());
+                existedAlbum.setReleaseDate(album.getReleaseDate());
+                existedAlbum.setArtist(album.getArtist());
+                existedAlbum.setGenre(album.getGenre());
                 album = existedAlbum;
             }
             logger.debug("Save album to DB");
@@ -93,7 +98,12 @@ public class MusicUpdater implements IUpdateMusic {
                     Track existedTrack = optionalTrack.get();
 
                     logger.debug("Set new track properties");
-                    existedTrack.update(track);
+                    existedTrack.setTitle(track.getTitle());
+                    existedTrack.setDuration(track.getDuration());
+                    existedTrack.setTrackPosition(track.getTrackPosition());
+                    existedTrack.setReleaseDate(track.getReleaseDate());
+                    existedTrack.setBpm(track.getBpm());
+                    existedTrack.setAlbum(track.getAlbum());
                     track = existedTrack;
                 }
                 logger.debug("Save track to DB");

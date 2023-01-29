@@ -1,20 +1,25 @@
 <configuration scan="true" scanPeriod="60 seconds">
     <appender name="FILE" class="ch.qos.logback.core.FileAppender">
         <file>./log/erathia.log</file>
-        <append>false</append>
+        <append>true</append>
         <encoder>
-            <pattern>%-4relative [%thread] %-5level %logger{35} - %msg%n</pattern>
+            <pattern>%d [%thread] %-5level %logger{35} - %msg%n</pattern>
         </encoder>
     </appender>
     <appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
-        <encoder>
-            <pattern>%d{HH:mm:ss.SSS} [%thread] %-5level %logger{36} - %msg%n</pattern>
+        <encoder class="ch.qos.logback.classic.encoder.PatternLayoutEncoder">
+            <pattern>%d %green([%thread]) %highlight(%level) %logger{50} - %msg%n</pattern>
         </encoder>
     </appender>
 
-    <root level="debug">
-        <appender-ref ref="STDOUT"/>
-    </root>
+    <logger name="org.springframework" level="info">
+        <appender-ref ref="STDOUT" />
+    </logger>
+    <logger name="com.erathia" additivity="false">
+        <level value="debug"/>
+        <appender-ref ref="STDOUT" />
+    </logger>
+
     <root level="info" additivity="false">
         <appender-ref ref="FILE"/>
     </root>

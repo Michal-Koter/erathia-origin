@@ -29,15 +29,6 @@ public class Album {
     @ManyToOne
     private Genre genre;
 
-    public void update(Album album) {
-        this.title = album.getTitle();
-        this.fans = album.getFans();
-        this.releaseDate = album.getReleaseDate();
-        this.artist = album.getArtist();
-        this.tracks = album.getTracks();
-        this.genre = album.getGenre();
-    }
-
     @Override
     public int hashCode() {
         return Objects.hash(id, title, fans, releaseDate, sourceId, artist, tracks, genre);
@@ -49,5 +40,19 @@ public class Album {
         if (obj == null || getClass() != obj.getClass()) return false;
         Album album = (Album) obj;
         return id.equals(album.getId()) && title.equals(album.getTitle()) && releaseDate.equals(album.getReleaseDate()) && sourceId.equals(album.getSourceId()) && artist.equals(album.getArtist()) && tracks.equals(album.getTracks()) && genre.equals(album.getGenre());
+    }
+
+    @Override
+    public String toString() {
+        return "Album{" +
+                "id=" + id +
+                ", title='" + title + '\'' +
+                ", fans=" + fans +
+                ", releaseDate=" + releaseDate +
+                ", sourceId=" + sourceId +
+                ", artist=" + artist.getName() +
+                ", tracksCount=" + tracks.size() +
+                ", genre=" + genre.getName() +
+                '}';
     }
 }

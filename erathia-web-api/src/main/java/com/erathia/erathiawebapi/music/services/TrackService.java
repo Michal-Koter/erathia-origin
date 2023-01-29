@@ -2,7 +2,7 @@ package com.erathia.erathiawebapi.music.services;
 
 import com.erathia.erathiadata.models.Track;
 import com.erathia.erathiadata.repositories.ICatalogData;
-import com.erathia.erathiawebapi.contracts.TrackDto;
+import com.erathia.erathiawebapi.music.contracts.TrackDto;
 import com.erathia.erathiawebapi.music.mappers.IMapEntityDto;
 import jakarta.persistence.EntityExistsException;
 import jakarta.persistence.EntityNotFoundException;
@@ -86,7 +86,15 @@ public class TrackService implements IService<TrackDto, Track> {
         }
         Track track = optional.get();
         logger.debug("Set new track properties");
-        track.update(mapper.mapToEntity(trackDto));
+        track.setTitle(trackDto.getTitle());
+        track.setDuration(trackDto.getDuration());
+        track.setTrackPosition(trackDto.getTrackPosition());
+        track.setReleaseDate(trackDto.getReleaseDate());
+        track.setBpm(trackDto.getBpm());
+        track.setAlbum(
+                dataCatalog.getAlbums().findById(trackDto.getId()).orElse(null)
+        );
+
         logger.debug("Save updated album to DB");
         dataCatalog.getTracks().save(track);
         logger.info("Finish update(int,TrackDto)");

@@ -13,7 +13,7 @@ public class GenreMapper implements IMap<GenreDto, Genre> {
     public Genre map(GenreDto genreDto) {
         logger.debug("Run map(GenreDto) genreDtp={}",genreDto);
         Genre genre = new Genre();
-        genre.setName(genreDto.getName());
+        genre.setName(genreDto.getName().toLowerCase());
         genre.setSourceId(genreDto.getId());
         return genre;
     }

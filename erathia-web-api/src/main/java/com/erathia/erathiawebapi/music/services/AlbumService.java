@@ -2,7 +2,7 @@ package com.erathia.erathiawebapi.music.services;
 
 import com.erathia.erathiadata.models.*;
 import com.erathia.erathiadata.repositories.*;
-import com.erathia.erathiawebapi.contracts.*;
+import com.erathia.erathiawebapi.music.contracts.AlbumDto;
 import com.erathia.erathiawebapi.music.mappers.*;
 import jakarta.persistence.EntityExistsException;
 import jakarta.persistence.EntityNotFoundException;
@@ -90,10 +90,18 @@ public class AlbumService implements IService<AlbumDto, Album>{
         Album album = optional.get();
 
         logger.debug("Set new album properties");
-        album.update(albumMapper.mapToEntity(albumDto));
-        logger.debug("Set album artist");
+        album.setTitle(albumDto.getTitle());
+        album.setFans(albumDto.getFans());
+        album.setReleaseDate(albumDto.getReleaseDate());
         album.setArtist(
-                dataCatalog.getArtists().findById(albumDto.getArtist()).orElse(null)
+                dataCatalog.getArtists()
+                        .findById(albumDto.getId())
+                        .orElse(null)
+                );
+        album.setGenre(
+                dataCatalog.getGenres()
+                        .findByName(albumDto.getGenre().toLowerCase())
+                        .orElse(null)
         );
 
         logger.debug("Save updated album to DB");

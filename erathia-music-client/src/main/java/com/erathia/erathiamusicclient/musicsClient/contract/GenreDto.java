@@ -9,4 +9,12 @@ import lombok.Setter;
 public class GenreDto {
     private int id;
     private String name;
+
+    @Override
+    public String toString() {
+        return "GenreDto{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                '}';
+    }
 }

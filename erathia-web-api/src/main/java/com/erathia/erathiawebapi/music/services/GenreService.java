@@ -2,7 +2,7 @@ package com.erathia.erathiawebapi.music.services;
 
 import com.erathia.erathiadata.models.Genre;
 import com.erathia.erathiadata.repositories.ICatalogData;
-import com.erathia.erathiawebapi.contracts.GenreDto;
+import com.erathia.erathiawebapi.music.contracts.GenreDto;
 import com.erathia.erathiawebapi.music.mappers.IMapEntityDto;
 import jakarta.persistence.EntityExistsException;
 import jakarta.persistence.EntityNotFoundException;
@@ -78,7 +78,7 @@ public class GenreService implements IService<GenreDto, Genre>{
         }
         Genre genre = optional.get();
         logger.debug("Set new genre properties");
-        genre.update(mapper.mapToEntity(genreDto));
+        genre.setName(genreDto.getName().toLowerCase());
         logger.debug("Save genre to DB");
         dataCatalog.getGenres().save(genre);
 

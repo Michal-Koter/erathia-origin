@@ -26,15 +26,6 @@ public class Track {
     @ManyToOne
     private Album album;
 
-    public void update(Track track) {
-        this.title = track.getTitle();
-        this.duration = track.getDuration();
-        this.trackPosition = track.getTrackPosition();
-        this.releaseDate = track.getReleaseDate();
-        this.bpm = track.getBpm();
-        this.album = track.getAlbum();
-    }
-
     @Override
     public int hashCode() {
         return Objects.hash(id, title, sourceId, duration, trackPosition, releaseDate, bpm, album);
@@ -46,5 +37,18 @@ public class Track {
         if (obj == null || getClass() != obj.getClass()) return false;
         Track track = (Track) obj;
         return id.equals(track.getId()) && title.equals(track.getTitle()) && sourceId.equals(track.getSourceId()) && duration.equals(track.getDuration()) && trackPosition.equals(track.getTrackPosition())  && releaseDate.equals(track.getReleaseDate()) && bpm.equals(track.getBpm()) && album.equals(track.getAlbum());
+    }
+
+    @Override
+    public String toString() {
+        return "Track{" +
+                "id=" + id +
+                ", title='" + title + '\'' +
+                ", duration=" + duration +
+                ", trackPosition=" + trackPosition +
+                ", releaseDate=" + releaseDate +
+                ", bpm=" + bpm +
+                ", sourceId=TitleName=" + album.getTitle() +
+                '}';
     }
 }

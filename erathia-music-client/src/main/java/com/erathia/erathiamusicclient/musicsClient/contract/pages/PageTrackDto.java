@@ -13,4 +13,13 @@ public class PageTrackDto {
     private int total;
     private String prev;
     private String next;
+
+    @Override
+    public String toString() {
+        return "PageTrackDto{" +
+                "total=" + total +
+                ", prev='" + prev + '\'' +
+                ", next='" + next + '\'' +
+                '}';
+    }
 }

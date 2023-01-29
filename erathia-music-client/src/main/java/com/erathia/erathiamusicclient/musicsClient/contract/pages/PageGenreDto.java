@@ -13,4 +13,13 @@ public class PageGenreDto {
     private int total;
     private String prev;
     private String next;
+
+    @Override
+    public String toString() {
+        return "PageGenreDto{" +
+                "total=" + total +
+                ", prev='" + prev + '\'' +
+                ", next='" + next + '\'' +
+                '}';
+    }
 }

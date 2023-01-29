@@ -11,4 +11,13 @@ public class ArtistDto {
     private String name;
     @JsonProperty("nb_fan")
     private int fansNumber;
+
+    @Override
+    public String toString() {
+        return "ArtistDto{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", fansNumber=" + fansNumber +
+                '}';
+    }
 }

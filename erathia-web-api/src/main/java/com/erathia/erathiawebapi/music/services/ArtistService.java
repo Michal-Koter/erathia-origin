@@ -2,7 +2,7 @@ package com.erathia.erathiawebapi.music.services;
 
 import com.erathia.erathiadata.models.Artist;
 import com.erathia.erathiadata.repositories.ICatalogData;
-import com.erathia.erathiawebapi.contracts.ArtistDto;
+import com.erathia.erathiawebapi.music.contracts.ArtistDto;
 import com.erathia.erathiawebapi.music.mappers.IMapEntityDto;
 import jakarta.persistence.EntityExistsException;
 import jakarta.persistence.EntityNotFoundException;
@@ -83,7 +83,8 @@ public class ArtistService implements IService<ArtistDto, Artist> {
         Artist artist = optional.get();
 
         logger.debug("Set new artist properties");
-        artist.update(mapper.mapToEntity(artistDto));
+        artist.setName(artistDto.getName());
+        artist.setFans(artistDto.getFans());
 
         logger.debug("save updated artist to DB");
         dataCatalog.getArtists().save(artist);

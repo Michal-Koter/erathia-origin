@@ -22,11 +22,6 @@ public class Genre {
     @OneToMany(mappedBy = "genre")
     private List<Album> albums;
 
-    public void update(Genre genre) {
-        this.name = genre.getName();
-        this.albums = genre.getAlbums();
-    }
-
     @Override
     public int hashCode() {
         return Objects.hash(id, name, sourceId, albums);
@@ -38,5 +33,15 @@ public class Genre {
         if (obj == null || getClass() != obj.getClass()) return false;
         Genre genre = (Genre) obj;
         return id.equals(genre.getId()) && name.equals(genre.getName()) && sourceId.equals(genre.getSourceId()) && albums.equals(genre.getAlbums());
+    }
+
+    @Override
+    public String toString() {
+        return "Genre{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", sourceId=" + sourceId +
+                ", albumsCount=" + albums.size() +
+                '}';
     }
 }

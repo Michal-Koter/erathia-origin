@@ -23,12 +23,6 @@ public class Artist {
     @OneToMany(mappedBy = "artist")
     private List<Album> albums;
 
-    public void update(Artist artist) {
-        this.name = artist.getName();
-        this.fans = artist.getFans();
-        this.albums = artist.getAlbums();
-    }
-
     @Override
     public int hashCode() {
         return Objects.hash(id, name, sourceId, fans, albums);
@@ -40,5 +34,16 @@ public class Artist {
         if (obj == null || getClass() != obj.getClass()) return false;
         Artist artist = (Artist) obj;
         return id.equals(artist.getId()) && name.equals(artist.getName()) && sourceId.equals(artist.getSourceId()) && fans.equals(artist.getFans()) && albums.equals(artist.getAlbums());
+    }
+
+    @Override
+    public String toString() {
+        return "Artist{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", sourceId=" + sourceId +
+                ", fans=" + fans +
+                ", albumsCount=" + albums.size() +
+                '}';
     }
 }

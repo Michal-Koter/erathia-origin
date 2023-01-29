@@ -1,16 +1,21 @@
 package com.erathia.erathiamusicupdater.music.mappers;
 
-import com.erathia.erathiaMusicClient.musicsClient.contract.TrackDto;
-import com.erathia.erathiaData.models.Track;
+import com.erathia.erathiamusicclient.musicsClient.contract.TrackDto;
+import com.erathia.erathiadata.models.Track;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.springframework.stereotype.Component;
 
-public class TrackMapper implements IMap{
-    public static Track map(TrackDto trackDto) {
+@Component
+public class TrackMapper implements IMap<TrackDto, Track> {
+    private static final Logger logger = LoggerFactory.getLogger(TrackMapper.class);
+
+    public Track map(TrackDto trackDto) {
+        logger.debug("Run map(TrackDto), trackDto={}", trackDto);
         Track track = new Track();
         track.setBpm(trackDto.getBpm());
         track.setDuration(trackDto.getDuration());
         track.setTrackPosition(trackDto.getTrackPosition());
-        track.setLink(trackDto.getLink());
-        track.setRank(trackDto.getRank());
         track.setReleaseDate(trackDto.getReleaseDate());
         track.setTitle(trackDto.getTitle());
         track.setSourceId(trackDto.getId());

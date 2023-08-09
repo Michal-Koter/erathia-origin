@@ -28,8 +28,8 @@ public class AlbumDto {
                 ", genreId=" + genreId +
                 ", fans=" + fans +
                 ", releaseDate=" + releaseDate +
-                ", artistName=" + artist.getName() +
-                ", tracksCount=" + tracks.size() +
+                ", artistName=" + (artist!=null ? artist.getName() : "null") +
+                ", tracksCount=" + (tracks!=null ? tracks.size() : "0")+
                 '}';
     }
 }

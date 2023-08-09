@@ -29,8 +29,8 @@ public class TrackDto {
                 ", trackPosition=" + trackPosition +
                 ", releaseDate=" + releaseDate +
                 ", bpm=" + bpm +
-                ", artistName=" + artist.getName() +
-                ", albumTitle=" + album.getTitle() +
+                ", artistName=" + (artist!=null ? artist.getName() : "null") +
+                ", albumTitle=" + (album!=null ? album.getTitle() : "null") +
                 '}';
     }
 }

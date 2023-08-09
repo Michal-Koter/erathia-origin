@@ -79,12 +79,25 @@ public class MusicUpdater implements IUpdateMusic {
             logger.debug("Save album to DB");
             dataCatalog.getAlbums().save(album);
 
-            logger.debug("Send request to MusicClient for album's tracks, albumId={}",albumDto.getId());
-            List<TrackDto> tracksDto = musicClient.getTracks(albumDto.getId());
+            List<TrackDto> tracksDto;
+            try {
+                logger.debug("Send request to MusicClient for album's tracks, albumId={}", albumDto.getId());
+                tracksDto = musicClient.getTracks(albumDto.getId());
+            } catch (RuntimeException e) {
+                logger.warn("Request failure, message: {}", e.getMessage());
+                continue;
+            }
             for (var t : tracksDto) {
+                TrackDto trackDto;
+                try {
+                    trackDto = musicClient.getTrack(t.getId());
+                } catch (RuntimeException e) {
+                    logger.warn("Request failure, message: {}", e.getMessage());
+                    continue;
+                }
+
                 Track track;
                 try {
-                    TrackDto trackDto = musicClient.getTrack(t.getId());
                     track = mapCollector.getTrackMapper().map(trackDto);
                 } catch (RuntimeException e) {
                     logger.warn("Mapping TrackDto to Track failure, exception={}",e.getMessage());
@@ -138,6 +151,6 @@ public class MusicUpdater implements IUpdateMusic {
 
     private Genre findGenre(int genreSourceId) {
         var optionalGenre = dataCatalog.getGenres().findBySourceId(genreSourceId);
-        return optionalGenre.isPresent() ? optionalGenre.get() : null;
+        return optionalGenre.orElse(null);
     }
 }

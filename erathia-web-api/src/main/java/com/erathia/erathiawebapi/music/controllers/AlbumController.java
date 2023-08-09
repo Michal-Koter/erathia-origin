@@ -47,7 +47,7 @@ public class AlbumController {
         }
     }
 
-    @PostMapping("/add")
+    @PostMapping()
     public ResponseEntity<Object> add(@RequestBody AlbumDto albumDto) {
         logger.info("Run add(AlbumDto), albumDto={}",albumDto);
         try {
@@ -63,7 +63,7 @@ public class AlbumController {
         }
     }
 
-    @PutMapping("/update/{id}")
+    @PutMapping("/{id}")
     public ResponseEntity<Object> update(@RequestBody AlbumDto albumDto, @PathVariable int id) {
         logger.info("Run update(AlbumDto,int), id={}, albumDto={}",id,albumDto);
         try {

@@ -47,7 +47,7 @@ public class TrackController {
         }
     }
 
-    @PostMapping("/add")
+    @PostMapping("")
     public ResponseEntity<Object> add(@RequestBody TrackDto trackDto) {
         logger.info("Run add(TrackDto), trackDto={}",trackDto);
         try {
@@ -63,7 +63,7 @@ public class TrackController {
         }
     }
 
-    @PutMapping("/update/{id}")
+    @PutMapping("{id}")
     public ResponseEntity<Object> update(@PathVariable int id, @RequestBody TrackDto trackDto) {
         logger.info("Run update(int, TrackDto), id={}, trackDto={}",id,trackDto);
         try {
@@ -79,7 +79,7 @@ public class TrackController {
         }
     }
 
-    @DeleteMapping("/delete/{id}")
+    @DeleteMapping("{id}")
     public ResponseEntity<Object> delete(@PathVariable int id) {
         logger.info("Run delete(int), id={}",id);
         try {

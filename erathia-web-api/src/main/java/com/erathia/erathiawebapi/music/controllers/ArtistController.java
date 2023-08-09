@@ -47,7 +47,7 @@ public class ArtistController {
         }
     }
 
-    @PostMapping("/add")
+    @PostMapping()
     public ResponseEntity<Object> add(@RequestBody ArtistDto artistDto) {
         logger.info("Run add(ArtistDto), artistDto={}",artistDto);
         try {
@@ -63,7 +63,7 @@ public class ArtistController {
         }
     }
 
-    @PutMapping("/update/{id}")
+    @PutMapping("/{id}")
     public ResponseEntity<Object> update(@PathVariable int id, @RequestBody ArtistDto artistDto) {
         logger.info("Run update(int, ArtistDto), id={}, artistDto={}",id,artistDto);
         try {
@@ -79,7 +79,7 @@ public class ArtistController {
         }
     }
 
-    @DeleteMapping("/delete/{id}")
+    @DeleteMapping("/{id}")
     public ResponseEntity<Object> delete(@PathVariable int id) {
         logger.info("Run delete(int), id={}",id);
         try {

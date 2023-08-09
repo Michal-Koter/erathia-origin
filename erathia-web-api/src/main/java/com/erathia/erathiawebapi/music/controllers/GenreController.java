@@ -47,7 +47,7 @@ public class GenreController {
         }
     }
 
-    @PostMapping("/add")
+    @PostMapping()
     public ResponseEntity<Object> add(@RequestBody GenreDto genreDto) {
         logger.info("Run add(GenreDto), genreDto={}",genreDto);
         try {
@@ -63,7 +63,7 @@ public class GenreController {
         }
     }
 
-    @PutMapping("/update/{id}")
+    @PutMapping("/{id}")
     public ResponseEntity<Object> update(@PathVariable int id, @RequestBody GenreDto genreDto) {
         logger.info("Run update(id, GenreDto), id={}, genreDto={}",id,genreDto);
         try {
@@ -79,7 +79,7 @@ public class GenreController {
         }
     }
 
-    @DeleteMapping("/delete/{id}")
+    @DeleteMapping("/{id}")
     public ResponseEntity<Object> delete(@PathVariable int id) {
         logger.info("Run delete(int), id={}",id);
         try {
